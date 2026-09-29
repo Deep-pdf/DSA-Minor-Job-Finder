@@ -3,62 +3,343 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matchly | Find your job fit</title>
+    <title>Matchly | DSA-Powered Career & Resume Matching</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎯</text></svg>">
 </head>
 <body>
-    <div class="bg-animation"></div>
+    <!-- Ambient Background Lighting -->
+    <div class="bg-animation">
+        <div class="ambient-orb orb-1"></div>
+        <div class="ambient-orb orb-2"></div>
+        <div class="ambient-orb orb-3"></div>
+    </div>
 
+    <!-- Navigation Header -->
     <header id="header">
-        <div class="logo"><strong>Matchly</strong></div>
+        <a href="#" class="logo-container">
+            <div class="logo-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                    <polyline points="2 17 12 22 22 17"></polyline>
+                    <polyline points="2 12 12 17 22 12"></polyline>
+                </svg>
+            </div>
+            <span class="logo-text">Matchly</span>
+            <span class="dsa-badge">DSA Engine</span>
+        </a>
         <nav class="nav-links">
-            <a href="#how">How It Works</a>
-            <a href="#form-anchor" class="btn-primary">Get Started</a>
+            <a href="#dsa" class="nav-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                How It Works
+            </a>
+            <a href="#form-anchor" class="nav-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                Profile Builder
+            </a>
+            <a href="#results-section" class="nav-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                Results
+            </a>
+            <a href="#form-anchor" class="btn btn-primary btn-sm">Find Matches</a>
         </nav>
     </header>
 
     <main>
+        <!-- Hero Section -->
         <section class="hero">
-            <h1>Find the job that fits you.</h1>
-            <p>Match your skills, experience, education and goals with opportunities that actually fit.</p>
-            <div>
-                <a href="#form-anchor" class="btn-primary">Get Started</a>
-                <a href="#how" style="margin-left: 20px; color: var(--primary);">How It Works</a>
+            <div class="hero-pill">
+                <span class="pulse-dot"></span>
+                <span>Engineered with C++17 & Core Data Structures</span>
             </div>
-        </section>
-
-        <section id="how" class="how-it-works">
-            <h2 style="text-align: center;">How it works</h2>
-            <div class="steps">
-                <div class="step"><h3>01</h3><p>Enter Your Profile</p></div>
-                <div class="step"><h3>02</h3><p>Analyze Your Match</p></div>
-                <div class="step"><h3>03</h3><p>Discover Matching Jobs</p></div>
+            <h1>Precision Career Matching with <span class="gradient-text">DSA Algorithms</span></h1>
+            <p class="hero-description">
+                Match your skills against industry job postings with zero external dependencies. Powered by custom Trie prefix autocomplete, $O(1)$ Hash Set skill verification, Dijkstra shortest path transit proximity, and Merge Sort job ranking.
+            </p>
+            <div class="hero-actions">
+                <a href="#form-anchor" class="btn btn-primary btn-lg">
+                    <span>Build Your Profile</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+                <a href="#dsa" class="btn btn-secondary btn-lg">
+                    <span>Inspect Algorithms</span>
+                </a>
             </div>
-        </section>
 
-        <section id="form-anchor" style="padding: 100px 20px; max-width: 800px; margin: 0 auto;">
-            <h2 style="text-align: center;">Enter Your Profile</h2>
-            <div id="profile-section" style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                <input type="text" id="name" placeholder="Name">
-                <input type="text" id="education" placeholder="Education (Degree)">
-                <input type="number" id="experience" placeholder="Years of Experience">
-                <div id="skill-input-container" style="position: relative;">
-                    <input type="text" id="skill-input" placeholder="Type a skill...">
-                    <div id="autocomplete-list" style="position: absolute; background: white; border: 1px solid #ccc; width: 100%; z-index: 10;"></div>
+            <!-- Instant Demo Presets Bar -->
+            <div class="demo-presets-card">
+                <div class="demo-title">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+                    <span>Instant Demo Profiles:</span>
                 </div>
-                <div id="skills-list" style="margin: 10px 0;"></div>
-                <button id="match-btn" style="background: #4f46e5; color: white; padding: 10px 20px; border: none; border-radius: 4px; width: 100%; cursor: pointer;">Match Jobs</button>
+                <div class="demo-buttons">
+                    <button type="button" class="demo-btn" onclick="loadDemoProfile('cpp')">
+                        <span>⚡ Rahul</span>
+                        <small>(C++ & Systems)</small>
+                    </button>
+                    <button type="button" class="demo-btn" onclick="loadDemoProfile('frontend')">
+                        <span>💻 Priya</span>
+                        <small>(Frontend & React)</small>
+                    </button>
+                    <button type="button" class="demo-btn" onclick="loadDemoProfile('data')">
+                        <span>📊 Amit</span>
+                        <small>(Data Science)</small>
+                    </button>
+                    <button type="button" class="demo-btn" onclick="loadDemoProfile('devops')">
+                        <span>☁️ Sneha</span>
+                        <small>(DevOps & Cloud)</small>
+                    </button>
+                </div>
             </div>
         </section>
 
-        <section id="results-section" style="padding: 50px 20px; max-width: 800px; margin: 0 auto;">
-            <h2 style="text-align: center;">Recommended Jobs</h2>
-            <div id="job-cards"></div>
+        <!-- DSA Showcase / How It Works -->
+        <section id="dsa" class="dsa-showcase-section">
+            <div class="section-header">
+                <div class="section-subtitle">Core Architecture</div>
+                <h2 class="section-title">How Data Structures Power the Matching</h2>
+            </div>
+            <div class="dsa-cards">
+                <div class="dsa-card">
+                    <div class="dsa-card-header">
+                        <div class="dsa-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="3"></circle><line x1="12" y1="8" x2="12" y2="12"></line><circle cx="6" cy="19" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="12" y1="12" x2="6" y2="16"></line><line x1="12" y1="12" x2="18" y2="16"></line></svg>
+                        </div>
+                        <span class="complexity-pill">O(L) Lookup</span>
+                    </div>
+                    <h3>Trie (Prefix Tree)</h3>
+                    <p>Enables instant $O(L)$ autocomplete for skills as you type. Traverses 26-ary branch nodes to provide deterministic prefix completions without linear database scans.</p>
+                </div>
+
+                <div class="dsa-card">
+                    <div class="dsa-card-header">
+                        <div class="dsa-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                        </div>
+                        <span class="complexity-pill">O(1) Avg Match</span>
+                    </div>
+                    <h3>Custom Hash Set</h3>
+                    <p>Uses separate chaining hash table with polynomial rolling hash to verify skill membership in average $O(1)$ time, computing exact matched and missing skill sets.</p>
+                </div>
+
+                <div class="dsa-card">
+                    <div class="dsa-card-header">
+                        <div class="dsa-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        </div>
+                        <span class="complexity-pill">O((V+E) log V)</span>
+                    </div>
+                    <h3>Weighted Graph & Dijkstra</h3>
+                    <p>Models major tech hubs as a transit graph. Computes shortest transit distance via Dijkstra's min-priority queue to grade location proximity instead of naive string matching.</p>
+                </div>
+
+                <div class="dsa-card">
+                    <div class="dsa-card-header">
+                        <div class="dsa-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                        </div>
+                        <span class="complexity-pill">O(N log N) Rank</span>
+                    </div>
+                    <h3>Merge Sort Algorithm</h3>
+                    <p>Applies stable divide-and-conquer merge sort to rank candidate opportunities by overall match score without relying on built-in standard library sort routines.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Candidate Profile Builder Section -->
+        <section id="form-anchor" class="profile-section-wrapper">
+            <div class="profile-card">
+                <div class="form-grid">
+                    <!-- Column 1: Candidate Bio & Education -->
+                    <div class="form-col">
+                        <h3 class="form-col-title">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                            <span>Candidate Information</span>
+                        </h3>
+
+                        <div class="form-group">
+                            <label class="form-label" for="name">Full Name</label>
+                            <div class="input-with-icon">
+                                <span class="input-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                </span>
+                                <input type="text" id="name" class="form-control" placeholder="e.g. Rahul Sharma" value="Rahul Sharma">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="education">Highest Degree & Field</label>
+                            <div class="input-with-icon">
+                                <span class="input-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+                                </span>
+                                <input type="text" id="education" class="form-control" list="degree-options" placeholder="e.g. B.Tech Computer Science" value="B.Tech Computer Science">
+                                <datalist id="degree-options">
+                                    <option value="B.Tech Computer Science">
+                                    <option value="B.E. Computer Science">
+                                    <option value="B.Sc Computer Science">
+                                    <option value="B.Sc Data Science">
+                                    <option value="M.Tech Computer Science">
+                                    <option value="MCA">
+                                    <option value="BCA">
+                                </datalist>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="experience">Years of Professional Experience</label>
+                            <div class="input-with-icon">
+                                <span class="input-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                                </span>
+                                <input type="number" id="experience" class="form-control" placeholder="e.g. 1" min="0" max="30" step="0.5" value="1">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="location">Preferred Location</label>
+                            <div class="input-with-icon">
+                                <span class="input-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                </span>
+                                <input type="text" id="location" class="form-control" list="city-options" placeholder="e.g. Bengaluru, India" value="Bengaluru, India">
+                                <datalist id="city-options">
+                                    <option value="Bengaluru, India">
+                                    <option value="Pune, India">
+                                    <option value="Hyderabad, India">
+                                    <option value="Mumbai, India">
+                                    <option value="Chennai, India">
+                                    <option value="Noida, India">
+                                    <option value="Gurgaon, India">
+                                </datalist>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Skills Management & Autocomplete -->
+                    <div class="form-col">
+                        <h3 class="form-col-title">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                            <span>Skills & Competencies</span>
+                        </h3>
+
+                        <div class="form-group">
+                            <label class="form-label" for="skill-input">Add Skills (Trie-Powered Autocomplete)</label>
+                            <div class="skills-input-wrapper">
+                                <div class="input-with-icon">
+                                    <span class="input-icon">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                                    </span>
+                                    <input type="text" id="skill-input" class="form-control" placeholder="Type a skill (e.g. C++, Python, SQL)..." autocomplete="off">
+                                    <button type="button" id="clear-input-btn" class="skill-input-clear" title="Clear input">&times;</button>
+                                </div>
+                                <div id="autocomplete-list" class="autocomplete-dropdown"></div>
+                            </div>
+                        </div>
+
+                        <!-- Selected Skills Cloud -->
+                        <div class="form-group">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                                <span class="form-label" style="margin-bottom: 0;">Selected Skills</span>
+                                <button type="button" id="clear-all-skills" class="btn btn-secondary btn-sm" style="padding: 2px 8px; font-size: 0.75rem;">Clear All</button>
+                            </div>
+                            <div id="skills-list" class="skills-container">
+                                <!-- Populated dynamically by app.js -->
+                            </div>
+                        </div>
+
+                        <!-- Quick Add Suggestions -->
+                        <div class="quick-skills-section">
+                            <div class="quick-skills-title">Quick Add Popular Skills:</div>
+                            <div class="quick-skills-list">
+                                <button type="button" class="quick-skill-chip" onclick="quickAddSkill('C++')">+ C++</button>
+                                <button type="button" class="quick-skill-chip" onclick="quickAddSkill('DSA')">+ DSA</button>
+                                <button type="button" class="quick-skill-chip" onclick="quickAddSkill('Python')">+ Python</button>
+                                <button type="button" class="quick-skill-chip" onclick="quickAddSkill('SQL')">+ SQL</button>
+                                <button type="button" class="quick-skill-chip" onclick="quickAddSkill('Git')">+ Git</button>
+                                <button type="button" class="quick-skill-chip" onclick="quickAddSkill('React')">+ React</button>
+                                <button type="button" class="quick-skill-chip" onclick="quickAddSkill('Docker')">+ Docker</button>
+                                <button type="button" class="quick-skill-chip" onclick="quickAddSkill('Machine Learning')">+ ML</button>
+                                <button type="button" class="quick-skill-chip" onclick="quickAddSkill('Linux')">+ Linux</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Actions Bar -->
+                <div class="form-actions-bar">
+                    <div class="skills-count-info">
+                        <span>Active Skills:</span>
+                        <span id="skill-counter" class="skills-count-badge">0</span>
+                    </div>
+                    <div class="btn-actions-group">
+                        <button id="match-btn" class="btn btn-primary btn-lg">
+                            <span class="btn-text">Run Matching Algorithm</span>
+                            <span class="spinner"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Match Results Dashboard -->
+        <section id="results-section" class="results-section">
+            <div class="results-header-card">
+                <div class="results-title-group">
+                    <h2>Ranked Job Recommendations</h2>
+                    <p id="results-meta-subtitle" class="results-subtitle">Run the matcher above to view algorithm-ranked opportunities.</p>
+                </div>
+                <div class="results-controls">
+                    <div class="filter-tabs">
+                        <button type="button" class="filter-tab active" data-filter="all">All Jobs</button>
+                        <button type="button" class="filter-tab" data-filter="high">Top Fit (≥75%)</button>
+                        <button type="button" class="filter-tab" data-filter="medium">Good Fit (50-74%)</button>
+                        <button type="button" class="filter-tab" data-filter="low">Explore (&lt;50%)</button>
+                    </div>
+                    <div class="search-box">
+                        <span class="search-box-icon">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        </span>
+                        <input type="text" id="filter-search" placeholder="Filter by title, company, skill...">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Job Cards Output Grid -->
+            <div id="job-cards" class="job-cards-grid">
+                <div class="empty-results-card">
+                    <div class="empty-icon">🎯</div>
+                    <h3>No Matches Computed Yet</h3>
+                    <p>Select your skills or choose an instant demo profile above, then click <strong>"Run Matching Algorithm"</strong> to see ranked results.</p>
+                </div>
+            </div>
         </section>
     </main>
 
-    <footer style="text-align: center; padding: 20px;">
-        &copy; 2026 Matchly Inc.
+    <!-- Job Details Modal -->
+    <div id="job-modal" class="modal-backdrop">
+        <div class="modal-container">
+            <button type="button" class="modal-close-btn" onclick="closeJobModal()">&times;</button>
+            <div id="modal-content"></div>
+        </div>
+    </div>
+
+    <!-- Notification Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div>
+                <strong>Matchly</strong> &mdash; College Minor Project in Data Structures &amp; Algorithms
+            </div>
+            <div>
+                Built with C++17 Backend, Trie, Hash Set, Merge Sort &amp; Modern Vanilla Web Interface
+            </div>
+            <div>
+                &copy; 2026 Matchly
+            </div>
+        </div>
     </footer>
 
     <script src="landing.js"></script>

@@ -21,6 +21,7 @@ struct MatchResult {
         double education;
         double certifications;
         double location;
+        double locationDistanceKm;
     } breakdown;
 
     struct CandidateInfo {

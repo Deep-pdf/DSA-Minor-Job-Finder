@@ -89,18 +89,11 @@ MatchResult Matcher::calculateMatch(const Candidate& candidate, const Job& job) 
     }
     result.candidateCertifications = candidate.certifications;
 
-    // 5. Location Score (5%)
-    // Deterministic matching: Simple string comparison for now.
-    if (job.location == "Remote" || job.location == candidate.location) {
-        result.breakdown.location = 100.0;
-    } else {
-        // Simple heuristic: same city? (if location is "City, India")
-        // Just checking equality for now as per requirements: "100 if same city, 50 if different".
-        // The requirements say: Same city 100, Same state/region 75, Different 50.
-        // With current data "City, India", we only have City resolution.
-        // Let's stick to 100 for same, 50 for different.
-        result.breakdown.location = 50.0;
-    }
+    // 5. Location Score (5%) via CityGraph (Dijkstra Shortest Path Algorithm)
+    static CityGraph cityGraph;
+    auto [locScore, locDistance] = cityGraph.calculateLocationScoreAndDistance(candidate.location, job.location);
+    result.breakdown.location = locScore;
+    result.breakdown.locationDistanceKm = locDistance;
 
     // Final Score
     result.overallMatch = (result.breakdown.skills * WEIGHT_SKILLS) +

@@ -57,7 +57,8 @@ std::string ApiController::handleMatchRequest(const std::string& jsonInput) {
                 {"experience", r.breakdown.experience},
                 {"education", r.breakdown.education},
                 {"certifications", r.breakdown.certifications},
-                {"location", r.breakdown.location}
+                {"location", r.breakdown.location},
+                {"locationDistanceKm", r.breakdown.locationDistanceKm}
             };
 
             jobJson["candidate"] = {
