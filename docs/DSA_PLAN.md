@@ -137,36 +137,59 @@ Status: Verified (Phase 7). Implementation: `dsa/sorting.cpp`.
 
 ---
 
-## 5. How DSA Components Connect
+## 5. Weighted Graph & Dijkstra's Algorithm — Location Proximity [IMPLEMENTED]
+
+Status: Verified. Implementation: `dsa/city_graph.cpp`.
+
+### What
+An undirected weighted graph representing major tech hub cities connected by realistic transit corridor distances (in km). Calculates the shortest geographical/transit path between candidate location and job location using **Dijkstra's Algorithm** with a min-priority queue.
+
+### Why
+Naive string equality treats a 150 km regional commute (Pune $\leftrightarrow$ Mumbai) as 0% match, identical to an across-country distance (2,150 km Bengaluru $\leftrightarrow$ Noida). Using a Weighted Graph and Dijkstra's algorithm allows the matching engine to:
+1. Discover the true shortest travel/relocation path between tech hubs.
+2. Grade location proximity mathematically:
+   - Same City ($0$ km) or Remote: **100%**
+   - Near Regional Corridor ($\le 200$ km): **90%**
+   - Interstate Corridor ($\le 700$ km): **75%**
+   - Moderate Distance ($\le 1200$ km): **55%**
+   - Distant Hub ($> 1200$ km): **40%**
+
+### How It Works
+1. **Adjacency List:** An adjacency list `std::unordered_map<std::string, std::vector<std::pair<std::string, double>>>` stores vertices (cities) and weighted edges (road/rail distance in km).
+2. **Min-Priority Queue:** Dijkstra maintains a min-heap of `(distance, city)` pairs, greedily extracting the closest unvisited node.
+3. **Relaxation:** For vertex $u$, for each neighbor $v$ with edge weight $w$, if $\text{dist}[u] + w < \text{dist}[v]$, update $\text{dist}[v] = \text{dist}[u] + w$ and push to heap.
+
+### Complexity
+
+| Metric | Value |
+|--------|-------|
+| Time | O((V + E) log V) where V = cities, E = transit corridors |
+| Space | O(V + E) for adjacency list and distance map |
+
+---
+
+## 6. How DSA Components Connect
 
 ```
-Candidate Input
+Candidate Input (Skills, Location, Experience)
        │
        ▼
-  ┌─────────────┐
-  │  Hash Set   │ ← candidate skills inserted here
-  └──────┬──────┘
-         │
-         ▼
-  ┌─────────────┐     ┌──────────────┐
-  │  Matcher    │ ──→ │  Job Dataset │
-  │  (uses hash │     └──────────────┘
-  │   set for   │
-  │   lookups)  │
-  └──────┬──────┘
-         │ produces MatchResult[] (unsorted)
-         ▼
-  ┌─────────────┐
-  │ Merge Sort  │
-  └──────┬──────┘
-         │ produces MatchResult[] (sorted by score desc)
-         ▼
-    JSON Response → Frontend
-
-  ┌─────────────┐
-  │    Trie     │ ← built once at startup from skills.json
-  └──────┬──────┘
-         │ used independently for autocomplete requests
-         ▼
-    Suggestions → Frontend
+  ┌─────────────┐     ┌────────────────┐
+  │  Hash Set   │     │   City Graph   │
+  │  (Skills)   │     │  (Dijkstra)    │
+  └──────┬──────┘     └───────┬────────┘
+         │ O(1)               │ O((V+E) log V)
+         ▼                    ▼
+  ┌────────────────────────────────────┐     ┌──────────────┐
+  │              Matcher               │ ──→ │  Job Dataset │
+  │   (Skills % + Proximity % + Exp)   │     └──────────────┘
+  └──────────────────┬─────────────────┘
+                     │ produces MatchResult[] (unsorted)
+                     ▼
+              ┌─────────────┐
+              │ Merge Sort  │
+              └──────┬──────┘
+                     │ produces MatchResult[] (sorted by overall score desc)
+                     ▼
+                JSON Response → Frontend UI
 ```

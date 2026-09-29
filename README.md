@@ -14,9 +14,10 @@ A web-based system that matches a candidate's skills to job postings using core 
 | Component | Data Structure / Algorithm | Purpose |
 |-----------|---------------------------|---------|
 | **Hashing** | Custom hash set (separate chaining) | O(1) skill membership checking during matching |
-| **Trie** | Prefix tree | Skill search and autocomplete suggestions |
-| **Matching** | Comparison algorithm using hash set | Calculate match %, identify matched and missing skills |
-| **Sorting** | Merge sort | Rank jobs by match score (no `std::sort`) |
+| **Trie** | Prefix tree | O(L) skill search and autocomplete suggestions |
+| **Graph & Distance** | Weighted Graph + Dijkstra's Algorithm | O((V + E) log V) location proximity and transit distance fit |
+| **Matching** | Comparison algorithm using hash set & graph | Calculate match %, identify matched and missing skills |
+| **Sorting** | Merge sort | O(N log N) rank jobs by match score (no `std::sort`) |
 
 ## Tech Stack
 
@@ -31,9 +32,9 @@ No frameworks, no databases, no external APIs.
 ## Project Structure
 
 ```
-├── frontend/       # HTML, CSS, JS — user interface
+├── frontend/       # Modern responsive UI (HTML, CSS, JS)
 ├── backend/        # C++ HTTP server and route handlers
-├── dsa/            # All DSA implementations (isolated from server code)
+├── dsa/            # All DSA implementations (hashset, trie, sorting, city_graph, matcher)
 ├── models/         # Data structures: Job, Candidate, MatchResult
 ├── utils/          # JSON parsing, string utilities
 ├── data/           # jobs.json, skills.json
@@ -53,10 +54,12 @@ Browser → Frontend UI → HTTP Request
                 ┌─────────────────────────┐
                 │   1. Hash candidate     │
                 │      skills into set    │
-                │   2. Match against      │
+                │   2. Dijkstra shortest  │
+                │      city graph path    │
+                │   3. Match against      │
                 │      each job           │
-                │   3. Merge sort by      │
-                │      match score        │
+                │   4. Merge sort by      │
+                │      overall score      │
                 └─────────────────────────┘
                               ↓
                      JSON Response → UI renders ranked results
