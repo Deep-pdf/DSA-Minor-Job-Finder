@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matchly | Find your job fit</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bg-animation"></div>
+
+    <header id="header">
+        <div class="logo"><strong>Matchly</strong></div>
+        <nav class="nav-links">
+            <a href="#how">How It Works</a>
+            <a href="#form-anchor" class="btn-primary">Get Started</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Find the job that fits you.</h1>
+            <p>Match your skills, experience, education and goals with opportunities that actually fit.</p>
+            <div>
+                <a href="#form-anchor" class="btn-primary">Get Started</a>
+                <a href="#how" style="margin-left: 20px; color: var(--primary);">How It Works</a>
+            </div>
+        </section>
+
+        <section id="how" class="how-it-works">
+            <h2 style="text-align: center;">How it works</h2>
+            <div class="steps">
+                <div class="step"><h3>01</h3><p>Enter Your Profile</p></div>
+                <div class="step"><h3>02</h3><p>Analyze Your Match</p></div>
+                <div class="step"><h3>03</h3><p>Discover Matching Jobs</p></div>
+            </div>
+        </section>
+
+        <section id="form-anchor" style="padding: 100px 20px; max-width: 800px; margin: 0 auto;">
+            <h2 style="text-align: center;">Enter Your Profile</h2>
+            <div id="profile-section" style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                <input type="text" id="name" placeholder="Name">
+                <input type="text" id="education" placeholder="Education (Degree)">
+                <input type="number" id="experience" placeholder="Years of Experience">
+                <div id="skill-input-container" style="position: relative;">
+                    <input type="text" id="skill-input" placeholder="Type a skill...">
+                    <div id="autocomplete-list" style="position: absolute; background: white; border: 1px solid #ccc; width: 100%; z-index: 10;"></div>
+                </div>
+                <div id="skills-list" style="margin: 10px 0;"></div>
+                <button id="match-btn" style="background: #4f46e5; color: white; padding: 10px 20px; border: none; border-radius: 4px; width: 100%; cursor: pointer;">Match Jobs</button>
+            </div>
+        </section>
+
+        <section id="results-section" style="padding: 50px 20px; max-width: 800px; margin: 0 auto;">
+            <h2 style="text-align: center;">Recommended Jobs</h2>
+            <div id="job-cards"></div>
+        </section>
+    </main>
+
+    <footer style="text-align: center; padding: 20px;">
+        &copy; 2026 Matchly Inc.
+    </footer>
+
+    <script src="landing.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
